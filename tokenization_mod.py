@@ -120,15 +120,13 @@ def printable_text(text):
 def load_vocab(vocab_file):
     """Loads a vocabulary file into a dictionary."""
     vocab = collections.OrderedDict()
-    index = 0
-    with tf.gfile.GFile(vocab_file, "r") as reader:
-        while True:
-            token = convert_to_unicode(reader.readline())
-            if not token:
-                break
-            token = token.strip()
-            vocab[token] = index
-            index += 1
+    with open(vocab_file, "r", encoding="utf-8") as reader:
+        tokens = reader.readlines()
+    for index, token in enumerate(tokens):
+        token = convert_to_unicode(token)
+        token = token.strip()
+        vocab[token] = index
+
     return vocab
 
 
