@@ -10,6 +10,8 @@ https://ai-health.m.u-tokyo.ac.jp/uth-bert<br>
 3. Pre-print (medRxiv)<br>
 A clinical specific BERT developed with huge size of Japanese clinical narrative<br>
 https://doi.org/10.1101/2020.07.07.20148585<br>
+<br>
+This version is a forked version. 'load_vocab' function was changed from the original one.
 
 ## 1. Quick setup
 
