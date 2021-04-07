@@ -473,9 +473,7 @@ class FullTokenizerForMecab(object):
         return convert_by_vocab(self.inv_vocab, ids)
 
 
-def call_tokenizer(vocab_file="/home/dl-box/uth-bert/UTH_BERT_BASE_MC_BPE_V25000_10M/vocab.txt"):
-    """ Call tokenizer for this computer.
-    """
+def call_mecab_tokenizer():
     # Set path for your own computer
     mecab_ipadic_neologd = "/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd"
     mecab_J_medic = "/home/dl-box/Downloads/MANBYO_201907_Dic-utf8.dic"
@@ -484,6 +482,14 @@ def call_tokenizer(vocab_file="/home/dl-box/uth-bert/UTH_BERT_BASE_MC_BPE_V25000
         mecab_ipadic_neologd=mecab_ipadic_neologd,
         mecab_J_medic=mecab_J_medic
     )
+
+    return sub_tokenizer
+
+
+def call_tokenizer(vocab_file="/home/dl-box/uth-bert/UTH_BERT_BASE_MC_BPE_V25000_10M/vocab.txt"):
+    """ Call tokenizer for this computer.
+    """
+    sub_tokenizer = call_mecab_tokenizer()
 
     tokenizer = FullTokenizerForMecab(
         sub_tokenizer=sub_tokenizer,
